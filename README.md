@@ -5,9 +5,7 @@ functions (tools) instead of the user clicking buttons. It uses the
 OpenAI-compatible chat API, so any provider with a free tier works. The
 default is Groq (free key, no card).
 
-![Demo: a natural-language request turning into tool calls](docs/demo.gif)
-
-<!-- Record with QuickTime or Kap, export as docs/demo.gif (keep under ~5 MB). -->
+![Taskflow: a natural-language request turning into tool calls](docs/screenshot.png)
 
 ## Setup
 

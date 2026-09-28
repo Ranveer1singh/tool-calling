@@ -1,30 +1,23 @@
 [
   {
-    "id": "6a06f2be",
-    "title": "Push task on Railway (3:30 PM - 5:30 PM - pending client permission)",
+    "id": "7285e140",
+    "title": "Review the client proposal",
     "done": false,
-    "dueDate": "2026-09-04",
-    "createdAt": "2026-09-04T07:18:09.665Z"
+    "dueDate": "2026-09-29",
+    "createdAt": "2026-09-28T14:48:16.046Z"
   },
   {
-    "id": "f0f27e60",
-    "title": "Lunch (12:00 PM - 12:45 PM)",
+    "id": "e0dde574",
+    "title": "Book a dentist appointment",
     "done": false,
-    "dueDate": "2026-09-04",
-    "createdAt": "2026-09-04T07:18:09.667Z"
+    "dueDate": "2026-10-05",
+    "createdAt": "2026-09-28T14:48:16.047Z"
   },
   {
-    "id": "eed92032",
-    "title": "Client Meeting (2:00 PM - 3:00 PM)",
-    "done": false,
-    "dueDate": "2026-09-04",
-    "createdAt": "2026-09-04T07:18:09.670Z"
-  },
-  {
-    "id": "dab7a35b",
-    "title": "Gym Session (10:00 AM - 11:30 AM)",
+    "id": "929c35f4",
+    "title": "Push the release notes",
     "done": true,
-    "dueDate": "2026-09-04",
-    "createdAt": "2026-09-04T07:18:09.676Z"
+    "dueDate": "2026-09-28",
+    "createdAt": "2026-09-28T14:48:16.050Z"
   }
 ]

@@ -11,14 +11,18 @@ const BASE_URL = process.env.LLM_BASE_URL ?? "https://api.groq.com/openai/v1";
 const MODEL = process.env.LLM_MODEL ?? "llama-3.3-70b-versatile";
 const MAX_ITERATIONS = 10;
 
-const SYSTEM_PROMPT = `You are a todo assistant. You manage the user's daily tasks
+// Built per request so the date stays correct on a long-running server.
+function systemPrompt(): string {
+  return `You are a todo assistant. You manage the user's daily tasks
 using the provided tools. Today's date is ${new Date().toISOString().slice(0, 10)}.
 
 Rules:
 - Use list_tasks to find task ids before editing or deleting. Never guess an id.
 - If a request is ambiguous (e.g. several tasks match), ask which one.
 - Do the work with tools, then confirm briefly in plain text what changed.
-- Do not describe tool calls; just report the outcome.`;
+- Do not describe tool calls; just report the outcome.
+- Reply in plain text only: no markdown, no asterisks, no headings.`;
+}
 
 export async function POST(request: Request) {
   const { messages } = (await request.json()) as { messages: ChatTurn[] };
@@ -36,7 +40,7 @@ export async function POST(request: Request) {
 
   // The UI keeps a plain-text transcript; the model only needs role + text.
   const history: Msg[] = [
-    { role: "system", content: SYSTEM_PROMPT },
+    { role: "system", content: systemPrompt() },
     ...messages.map((m): Msg => ({ role: m.role, content: m.content })),
   ];
   const toolCalls: ToolCallTrace[] = [];
@@ -46,7 +50,7 @@ export async function POST(request: Request) {
     // repeat until it answers in plain text.
     for (let i = 0; i < MAX_ITERATIONS; i++) {
       const completion = await client.chat.completions.create({
-        model: MODEL, 
+        model: MODEL,
         messages: history,
         tools: toolDefinitions,
         tool_choice: "auto",
