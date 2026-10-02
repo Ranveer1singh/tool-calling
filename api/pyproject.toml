@@ -1,0 +1,40 @@
+[project]
+name = "taskflow-api"
+version = "0.1.0"
+description = "FastAPI backend for the Taskflow tool-calling agent"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.142.2",
+    "openai>=3.23.0",
+    "pydantic-settings>=2.15.0",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pyright>=1.1.414",
+    "pytest>=9.1.1",
+    "ruff>=0.16.10",
+]
+
+# This is an application, not a library: nothing to build or publish.
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+# E/F = pycodestyle + pyflakes (defaults), I = import sorting,
+# UP = modernise syntax, B = common bugs, SIM = simplifications.
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pyright]
+include = ["app", "tests"]
+pythonVersion = "3.12"
+typeCheckingMode = "standard"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
