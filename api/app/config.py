@@ -5,6 +5,7 @@ validation on top: every field is typed, required ones fail fast at startup.
 """
 
 from functools import lru_cache
+from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -15,6 +16,7 @@ class Settings(BaseSettings):
     llm_api_key: str
     llm_base_url: str = "https://api.groq.com/openai/v1"
     llm_model: str = "llama-3.3-70b-versatile"
+    data_file: Path = Path("data/tasks.json")
 
 
 @lru_cache
